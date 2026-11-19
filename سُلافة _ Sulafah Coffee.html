@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سُلافة | Sulafah Coffee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { espresso:'#1c120c', roast:'#2b1a10', mocha:'#4a2f1d', sand:'#efe3d0', cream:'#f7efe2', gold:'#c9a15a', goldsoft:'#e3c88f' },
+    fontFamily: { body:['"IBM Plex Sans Arabic"','Tahoma','sans-serif'], display:['"Aref Ruqaa"','"IBM Plex Sans Arabic"','serif'] }
+  } }
+}
+</script>
+<style>
+  :root { color-scheme: dark; box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(80px + env(safe-area-inset-top, 0px)); }
+  body { background:#1c120c; color:#efe3d0; font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif; line-height:1.8; overflow-x:hidden; }
+  :focus-visible { outline:2px solid #c9a15a; outline-offset:3px; }
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity:1; transform:none; }
+  .grain { background-image: radial-gradient(circle at 20% 10%, rgba(201,161,90,.16), transparent 45%), radial-gradient(circle at 85% 80%, rgba(201,161,90,.10), transparent 50%), linear-gradient(160deg,#2b1a10 0%,#1c120c 60%,#140c07 100%); }
+  .steam { stroke-dasharray: 60; stroke-dashoffset: 60; animation: rise 3.2s ease-in-out infinite; }
+  .steam:nth-child(2){ animation-delay:.8s } .steam:nth-child(3){ animation-delay:1.6s }
+  @keyframes rise { 0%{stroke-dashoffset:60;opacity:0} 30%{opacity:.9} 100%{stroke-dashoffset:-60;opacity:0} }
+  .hero-in { animation: heroIn 1.2s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes heroIn { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:none} }
+  .card { transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease; }
+  .card:hover { transform: translateY(-6px); border-color: rgba(201,161,90,.6); box-shadow: 0 18px 40px -18px rgba(201,161,90,.35); }
+  .btn { transition: transform .3s ease, background-color .3s ease, color .3s ease, box-shadow .3s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .tab.active { background:#c9a15a; color:#1c120c; border-color:#c9a15a; }
+  @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } .reveal{opacity:1;transform:none} html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500" style="padding-top:env(safe-area-inset-top,0px)">
+  <div class="max-w-6xl mx-auto px-5 h-20 flex items-center justify-between">
+    <a href="#home" class="font-display text-3xl text-goldsoft leading-none" aria-label="سُلافة">سُلافة <span class="text-sm font-body text-sand/70 tracking-wide" dir="ltr">Sulafah</span></a>
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a class="hover:text-gold transition" href="#home">الرئيسية</a>
+      <a class="hover:text-gold transition" href="#story">قصتنا</a>
+      <a class="hover:text-gold transition" href="#menu">قائمة المشروبات</a>
+      <a class="hover:text-gold transition" href="#branches">الفروع</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#menu" class="btn hidden sm:inline-block bg-gold text-espresso font-medium rounded-full px-6 py-2 text-sm hover:bg-goldsoft">اطلب الآن</a>
+      <button id="burger" class="md:hidden p-2 text-sand" aria-label="فتح القائمة" aria-expanded="false">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h18M4 13h18M4 19h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileNav" class="hidden md:hidden bg-espresso/95 backdrop-blur border-t border-gold/20 px-5 py-4 space-y-3 text-center">
+    <a class="block py-1" href="#home">الرئيسية</a><a class="block py-1" href="#story">قصتنا</a>
+    <a class="block py-1" href="#menu">قائمة المشروبات</a><a class="block py-1" href="#branches">الفروع</a>
+    <a href="#menu" class="inline-block bg-gold text-espresso rounded-full px-8 py-2 font-medium">اطلب الآن</a>
+  </div>
+</header>
+
+<main>
+<!-- Hero -->
+<section id="home" class="grain relative min-h-screen flex items-center pt-28 pb-16">
+  <div class="max-w-6xl mx-auto px-5 w-full grid md:grid-cols-2 gap-10 items-center">
+    <div class="hero-in">
+      <h1 class="font-display text-6xl sm:text-7xl lg:text-8xl text-cream leading-[1.15]">قهوةٌ تُحمَّص<br>بحكاية</h1>
+      <p class="mt-6 max-w-md text-sand/80 text-lg">في سُلافة نختار محاصيل نادرة من مزارع حول العالم، ونحمّصها كل صباح في الرياض لتصلك طازجة، كما تُقدَّم في مجالس نجد.</p>
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href="#menu" class="btn bg-gold text-espresso font-medium rounded-full px-8 py-3 hover:bg-goldsoft hover:shadow-lg hover:shadow-gold/20">استكشف القائمة</a>
+        <a href="#branches" class="btn border border-gold/60 text-goldsoft rounded-full px-8 py-3 hover:bg-gold/10">احجز طاولتك</a>
+      </div>
+    </div>
+    <div class="hero-in flex justify-center" style="animation-delay:.25s">
+      <svg viewBox="0 0 320 320" class="w-72 sm:w-96 max-w-full" fill="none" role="img" aria-label="فنجان قهوة يتصاعد منه البخار">
+        <circle cx="160" cy="170" r="140" stroke="#c9a15a" stroke-opacity=".25"/>
+        <circle cx="160" cy="170" r="112" stroke="#c9a15a" stroke-opacity=".15"/>
+        <g stroke="#e3c88f" stroke-width="3" stroke-linecap="round">
+          <path class="steam" d="M130 130c-14-18 14-30 0-52"/><path class="steam" d="M160 125c-14-18 14-30 0-56"/><path class="steam" d="M190 130c-14-18 14-30 0-52"/>
+        </g>
+        <path d="M82 148h156v58c0 34-28 62-62 62h-32c-34 0-62-28-62-62z" fill="#4a2f1d" stroke="#c9a15a" stroke-width="2"/>
+        <path d="M238 164h14c18 0 18 40 0 40h-18" stroke="#c9a15a" stroke-width="2"/>
+        <ellipse cx="160" cy="148" rx="78" ry="12" fill="#2b1a10" stroke="#c9a15a" stroke-width="2"/>
+        <path d="M130 270h60M110 282h100" stroke="#c9a15a" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+  <div class="absolute bottom-0 inset-x-0 border-t border-gold/20 bg-espresso/60 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-5 py-5 grid grid-cols-3 text-center">
+      <div><div class="font-display text-3xl sm:text-4xl text-goldsoft" data-count="15" data-prefix="+">+15</div><div class="text-xs sm:text-sm text-sand/70">محصول فاخر</div></div>
+      <div><div class="font-display text-3xl sm:text-4xl text-goldsoft" data-count="4">4</div><div class="text-xs sm:text-sm text-sand/70">فروع</div></div>
+      <div><div class="font-display text-3xl sm:text-4xl text-goldsoft" data-count="4.9" data-dec="1">4.9</div><div class="text-xs sm:text-sm text-sand/70">تقييم العملاء</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Story -->
+<section id="story" class="py-24 bg-roast">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="max-w-2xl reveal">
+      <h2 class="font-display text-4xl sm:text-5xl text-cream">من المحمصة إلى فنجانك</h2>
+      <p class="mt-5 text-sand/80">بدأت سُلافة بمحمصة صغيرة وشغف كبير. نؤمن أن الفنجان الجيد يبدأ من حبة جيدة، لذلك نتابع كل دفعة من المزرعة حتى لحظة التحميص، ونقدّمها لك بنفس العناية.</p>
+    </div>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <article class="card reveal bg-espresso border border-gold/20 rounded-2xl p-8">
+        <svg class="w-11 h-11 text-gold" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6c8 8 12 14 12 21a12 12 0 0 1-24 0c0-4 2-7 5-10 0 4 2 6 4 6 2-5 1-11 3-17z"/></svg>
+        <h3 class="mt-5 text-xl text-cream font-medium">تحميص يومي</h3>
+        <p class="mt-2 text-sand/70 text-sm">نحمّص على دفعات صغيرة كل صباح، فتصلك الحبوب في ذروة نكهتها.</p>
+      </article>
+      <article class="card reveal bg-espresso border border-gold/20 rounded-2xl p-8" style="transition-delay:.1s">
+        <svg class="w-11 h-11 text-gold" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="24" cy="24" rx="13" ry="18" transform="rotate(30 24 24)"/><path d="M15 12c6 6 6 18 18 24"/></svg>
+        <h3 class="mt-5 text-xl text-cream font-medium">حبوب مختارة</h3>
+        <p class="mt-2 text-sand/70 text-sm">محاصيل مميزة من إثيوبيا وكولومبيا واليمن، تُقيَّم بالتذوق قبل اعتمادها.</p>
+      </article>
+      <article class="card reveal bg-espresso border border-gold/20 rounded-2xl p-8" style="transition-delay:.2s">
+        <svg class="w-11 h-11 text-gold" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="34" r="5"/><circle cx="37" cy="34" r="5"/><path d="M12 34h8l7-14h6l4 14M24 20l-3-6h-6"/></svg>
+        <h3 class="mt-5 text-xl text-cream font-medium">توصيل سريع</h3>
+        <p class="mt-2 text-sand/70 text-sm">يصل طلبك ساخناً في أقل من 40 دقيقة داخل المدن التي نخدمها.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu" class="py-24">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center max-w-xl mx-auto reveal">
+      <h2 class="font-display text-4xl sm:text-5xl text-cream">قائمة المشروبات</h2>
+      <p class="mt-4 text-sand/70">اختر مشروبك واطلبه مباشرة عبر واتساب.</p>
+    </div>
+    <div id="tabs" class="mt-10 flex flex-wrap justify-center gap-3 reveal" role="tablist"></div>
+    <div id="grid" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-24 bg-roast">
+  <div class="max-w-6xl mx-auto px-5">
+    <h2 class="font-display text-4xl sm:text-5xl text-cream text-center reveal">ماذا قالوا عنا</h2>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <figure class="card reveal bg-espresso border border-gold/20 rounded-2xl p-8">
+        <div class="stars text-gold text-lg" aria-label="5 من 5">★★★★★</div>
+        <blockquote class="mt-4 text-sand/85">“أفضل فلات وايت جربته في الرياض. التحميص متوازن والحليب مخملي، وصار فرع حي الملقا محطتي كل صباح.”</blockquote>
+        <figcaption class="mt-5 text-goldsoft text-sm">نورة الشمري · الرياض</figcaption>
+      </figure>
+      <figure class="card reveal bg-espresso border border-gold/20 rounded-2xl p-8" style="transition-delay:.1s">
+        <div class="stars text-gold text-lg" aria-label="5 من 5">★★★★★</div>
+        <blockquote class="mt-4 text-sand/85">“الـ V60 بحبوب إثيوبيا يشبه شاياً مزهراً، نكهات توت وياسمين. شرحوا لي طريقة التحضير بكل صبر.”</blockquote>
+        <figcaption class="mt-5 text-goldsoft text-sm">فيصل الحربي · جدة</figcaption>
+      </figure>
+      <figure class="card reveal bg-espresso border border-gold/20 rounded-2xl p-8" style="transition-delay:.2s">
+        <div class="stars text-gold text-lg" aria-label="4 من 5">★★★★☆</div>
+        <blockquote class="mt-4 text-sand/85">“جلسة هادئة وخدمة راقية في فرع الطائف، والتوصيل وصل بسرعة والقهوة الباردة ما زالت منعشة.”</blockquote>
+        <figcaption class="mt-5 text-goldsoft text-sm">ريم القحطاني · الطائف</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer id="branches" class="pt-20 pb-8 bg-espresso border-t border-gold/20">
+  <div class="max-w-6xl mx-auto px-5 grid gap-12 md:grid-cols-3">
+    <div class="reveal">
+      <div class="font-display text-4xl text-goldsoft">سُلافة</div>
+      <p class="mt-3 text-sand/70 text-sm max-w-xs">قهوة مختصة سعودية، تُحمَّص يومياً وتُقدَّم بعناية.</p>
+      <div class="mt-5 flex gap-3">
+        <a href="#" aria-label="إنستغرام" class="w-10 h-10 grid place-items-center rounded-full border border-gold/40 text-gold hover:bg-gold hover:text-espresso transition"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="14" height="14" rx="4"/><circle cx="9" cy="9" r="3.2"/><circle cx="13" cy="5" r=".6" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="إكس" class="w-10 h-10 grid place-items-center rounded-full border border-gold/40 text-gold hover:bg-gold hover:text-espresso transition"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg></a>
+        <a href="#" aria-label="واتساب" class="w-10 h-10 grid place-items-center rounded-full border border-gold/40 text-gold hover:bg-gold hover:text-espresso transition"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M9 2a7 7 0 0 0-6 10.5L2 16l3.6-1A7 7 0 1 0 9 2z"/></svg></a>
+      </div>
+    </div>
+    <div class="reveal">
+      <h3 class="text-cream font-medium">مواعيد العمل</h3>
+      <ul class="mt-4 space-y-2 text-sm text-sand/75">
+        <li class="flex justify-between max-w-xs"><span>السبت – الأربعاء</span><span>7:00 ص – 12:00 م</span></li>
+        <li class="flex justify-between max-w-xs"><span>الخميس</span><span>7:00 ص – 1:00 ص</span></li>
+        <li class="flex justify-between max-w-xs"><span>الجمعة</span><span>1:00 م – 1:00 ص</span></li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <h3 class="text-cream font-medium">فروعنا</h3>
+      <div class="mt-4 flex flex-col gap-3 max-w-xs">
+        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Riyadh+Saudi+Arabia" class="btn flex justify-between border border-gold/40 rounded-xl px-5 py-3 text-sm hover:bg-gold hover:text-espresso"><span>الرياض</span><span>فتح الخريطة</span></a>
+        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Jeddah+Saudi+Arabia" class="btn flex justify-between border border-gold/40 rounded-xl px-5 py-3 text-sm hover:bg-gold hover:text-espresso"><span>جدة</span><span>فتح الخريطة</span></a>
+        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Taif+Saudi+Arabia" class="btn flex justify-between border border-gold/40 rounded-xl px-5 py-3 text-sm hover:bg-gold hover:text-espresso"><span>الطائف</span><span>فتح الخريطة</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto px-5 mt-14 pt-6 border-t border-gold/15 flex flex-col sm:flex-row justify-between gap-2 text-xs text-sand/55">
+    <span>© 2026 سُلافة. جميع الحقوق محفوظة.</span>
+    <span>تصميم وتطوير: كود لايت | CodeLite</span>
+  </div>
+</footer>
+
+<script>
+const items = [
+  { n:'V60 إثيوبي', c:'filter', p:22, d:'يرتفع منه عبق التوت والياسمين، تحضير يدوي بطيء.' },
+  { n:'كيمكس كولومبي', c:'filter', p:24, d:'كوب نظيف وحلاوة كراميل مع حموضة ناعمة.' },
+  { n:'إسبريسو مزدوج', c:'espresso', p:14, d:'شوتان مركّزان بكريما كثيفة ونهاية شوكولاتة داكنة.' },
+  { n:'فلات وايت', c:'espresso', p:19, d:'إسبريسو مع حليب مخملي محكم القوام.' },
+  { n:'لاتيه الزعفران', c:'espresso', p:23, d:'لاتيه بلمسة زعفران وعسل سدر.' },
+  { n:'كولد برو', c:'cold', p:20, d:'منقوع بارد لـ 18 ساعة، ناعم وقليل الحموضة.' },
+  { n:'أيس سبانش لاتيه', c:'cold', p:21, d:'حليب محلّى مع إسبريسو فوق ثلج مجروش.' },
+  { n:'توني الحمضيات', c:'cold', p:22, d:'إسبريسو وماء غازي وبرتقال طازج، منعش وخفيف.' }
+];
+const cats = { all:'الكل', filter:'قهوة مقطرة', espresso:'إسبريسو', cold:'مشروبات باردة' };
+const tabs = document.getElementById('tabs'), grid = document.getElementById('grid');
+const wa = n => 'https://wa.me/966500000000?text=' + encodeURIComponent('السلام عليكم، أرغب بطلب: ' + n + ' من سُلافة');
+
+function render(cat) {
+  grid.innerHTML = items.filter(i => cat === 'all' || i.c === cat).map(i => `
+    <article class="card bg-roast border border-gold/20 rounded-2xl p-7 flex flex-col" style="animation:heroIn .6s both">
+      <div class="flex items-start justify-between gap-4">
+        <h3 class="text-xl text-cream font-medium">${i.n}</h3>
+        <div class="text-goldsoft font-display text-2xl whitespace-nowrap">${i.p} <span class="text-sm font-body">ر.س</span></div>
+      </div>
+      <p class="mt-3 text-sm text-sand/70 flex-1">${i.d}</p>
+      <a target="_blank" rel="noopener" href="${wa(i.n)}" class="btn mt-6 text-center border border-gold/50 text-goldsoft rounded-full py-2 text-sm hover:bg-gold hover:text-espresso">اطلب عبر واتساب</a>
+    </article>`).join('');
+}
+tabs.innerHTML = Object.entries(cats).map(([k, v]) =>
+  `<button role="tab" data-cat="${k}" class="tab btn border border-gold/40 rounded-full px-6 py-2 text-sm hover:border-gold ${k==='all'?'active':''}">${v}</button>`).join('');
+tabs.addEventListener('click', e => {
+  const b = e.target.closest('.tab'); if (!b) return;
+  tabs.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t === b));
+  render(b.dataset.cat);
+});
+render('all');
+
+// Navbar
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('bg-espresso/95', scrollY > 40) || nav.classList.toggle('backdrop-blur', scrollY > 40) || nav.classList.toggle('shadow-lg', scrollY > 40);
+addEventListener('scroll', onScroll, { passive:true }); onScroll();
+const burger = document.getElementById('burger'), mnav = document.getElementById('mobileNav');
+burger.addEventListener('click', () => { const o = mnav.classList.toggle('hidden') === false; burger.setAttribute('aria-expanded', o); nav.classList.add('bg-espresso/95'); });
+mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mnav.classList.add('hidden')));
+
+// Scroll reveal
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold:.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Stat counters
+document.querySelectorAll('[data-count]').forEach(el => {
+  const end = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), pre = el.dataset.prefix || '';
+  const t0 = performance.now();
+  (function tick(t) {
+    const k = Math.min((t - t0) / 1400, 1);
+    el.textContent = pre + (end * (1 - Math.pow(1 - k, 3))).toFixed(dec);
+    if (k < 1) requestAnimationFrame(tick);
+  })(t0);
+});
+</script>
+</body>
+</html>
